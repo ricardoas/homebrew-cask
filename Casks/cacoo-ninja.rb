@@ -5,7 +5,6 @@ cask 'cacoo-ninja' do
   url 'http://assets.cacoo.com/extension/151111/CacooNinjaInstaller.dmg'
   name 'Cacoo Ninja'
   homepage 'https://cacoo.com/extension'
-  license :gratis
 
   depends_on cask: 'adobe-air'
 
@@ -16,5 +15,6 @@ cask 'cacoo-ninja' do
   uninstall script: {
                       executable: Hbc::Container::Air::INSTALLER_PATHNAME,
                       args:       %w[-uninstall -silent /Applications/Cacoo\ Ninja.app],
+                      sudo:       true,
                     }
 end

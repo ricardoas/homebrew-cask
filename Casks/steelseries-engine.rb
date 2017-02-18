@@ -1,11 +1,11 @@
 cask 'steelseries-engine' do
-  version '3.6.4'
-  sha256 'f8ea15119259a8280787f747792c3964ce711fe2dbdbe884dabcdfdd68f1d4d2'
+  version '3.9.10'
+  sha256 '465d1ca5ce62211f3a98aa0e603a0f3988a6d7dc081e6be702f2cdfb4db5a547'
 
-  url "http://downloads.steelseriescdn.com/drivers/engine/SteelSeriesEngine#{version}.pkg"
-  name 'SteelSeries Engine 3'
+  # steelseriescdn.com was verified as official when first introduced to the cask
+  url "https://downloads.steelseriescdn.com/drivers/engine/SteelSeriesEngine#{version}.pkg"
+  name "SteelSeries Engine #{version.major}"
   homepage 'https://steelseries.com/engine'
-  license :gratis
 
   pkg "SteelSeriesEngine#{version}.pkg"
 
@@ -16,9 +16,9 @@ cask 'steelseries-engine' do
                          'com.steelseries.ssenext.uninstaller',
                        ],
             launchctl: 'com.steelseries.SSENext',
-            quit:      'com.steelseries.SteelSeries-Engine-3',
+            quit:      "com.steelseries.SteelSeries-Engine-#{version.major}",
             delete:    [
-                         '/Applications/SteelSeries Engine 3',
+                         "/Applications/SteelSeries Engine #{version.major}",
                          '/Library/LaunchAgents/com.steelseries.SSENext.plist',
                        ]
 end

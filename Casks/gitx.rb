@@ -7,7 +7,6 @@ cask 'gitx' do
           checkpoint: '55accf881c6e6bc22e4c30d394e7d1b51c7f7b2de4b1a746f5fdeae742311ac9'
   name 'GitX'
   homepage 'http://gitx.frim.nl/'
-  license :gpl
 
   conflicts_with cask: %w[
                          laullon-gitx
@@ -15,7 +14,7 @@ cask 'gitx' do
                        ]
 
   app 'GitX.app'
-  binary 'GitX.app/Contents/Resources/gitx'
+  binary "#{appdir}/GitX.app/Contents/Resources/gitx"
 
   zap delete: [
                 '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/nl.frim.gitx.sfl',

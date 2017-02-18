@@ -2,13 +2,12 @@ cask 'mplayer-osx-extended' do
   version 'rev15'
   sha256 '7979f2369730d389ceb4ec3082c65ffa3ec70f812f0699a2ef8acbae958a5c93'
 
-  # github.com is the official download host per the vendor homepage
+  # github.com/sttz/MPlayer-OSX-Extended was verified as official when first introduced to the cask
   url "https://github.com/sttz/MPlayer-OSX-Extended/releases/download/#{version}/MPlayer-OSX-Extended_#{version}.zip"
   appcast 'https://github.com/sttz/MPlayer-OSX-Extended/releases.atom',
-          checkpoint: '97a7842a97b15d35ed296f0917e0c6ebdf9f5c54f978e15bf419134bac7bf232'
+          checkpoint: '0a27d2b111abfe68462e7ef0cb71e9efe1ea34921b8a7a2dc208713208242dba'
   name 'MPlayer OSX Extended'
-  homepage 'http://www.mplayerosx.ch/'
-  license :gpl
+  homepage 'http://mplayerosx.ch/'
 
   app 'MPlayer OSX Extended.app'
 

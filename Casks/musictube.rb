@@ -1,13 +1,12 @@
 cask 'musictube' do
-  version '1.5.3'
-  sha256 '18c9c7169e9240cf8abfbb348199812cabcf6edecfd7dc1b1f4b1410ed3c4c41'
+  version '1.7'
+  sha256 '1aff1cc06d27f38dec72bd23e731d7cf5559db592502dc86be69ba747adc33b4'
 
   url 'http://flavio.tordini.org/files/musictube/musictube.dmg'
   appcast 'http://flavio.tordini.org/musictube-ws/appcast.xml',
-          checkpoint: 'ca9cf394ad6e2b9dd618194c63c069c5f36bd8dec1c9445f6f8b804437a0c61c'
+          checkpoint: 'ab92e80f868ed53351e8c254f7d77aa6ec07e371126c139e4a99bca88ce6e031'
   name 'Musictube'
   homepage 'http://flavio.tordini.org/musictube'
-  license :commercial
 
   app 'Musictube.app'
 end

@@ -1,13 +1,12 @@
 cask 'ckb' do
-  version '0.2.4'
-  sha256 '4a28adc1ed910250b402d37ee3e92174925e648e6d9c96b2ddf791e898db8159'
+  version '0.2.6'
+  sha256 '724f7ee9a0e363304bc2b0b82713582bf366a07f2e4c4639389bb6f7efb7ebbf'
 
   url "https://github.com/ccMSC/ckb/releases/download/v#{version}/ckb.pkg"
   appcast 'https://github.com/ccMSC/ckb/releases.atom',
-          checkpoint: '6cd6d2c9460cf1cc2b912f2e852231b404a9c0559f630e1ad14e34424214c51d'
+          checkpoint: 'e78446bd6ad2ad006934a73a1165dbce61e7d99b3a6da6537dff6abe7de16e3d'
   name 'ckb'
   homepage 'https://github.com/ccMSC/ckb'
-  license :gpl
 
   pkg 'ckb.pkg'
 

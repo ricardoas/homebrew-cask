@@ -4,10 +4,13 @@ cask 'asepsis' do
 
   url "http://downloads.binaryage.com/Asepsis-#{version}.dmg"
   name 'Asepsis'
-  homepage 'http://asepsis.binaryage.com/'
-  license :bsd
+  homepage 'https://asepsis.binaryage.com/'
 
   pkg 'Asepsis.pkg'
 
   uninstall pkgutil: 'com.binaryage.pkg.asepsis'
+
+  caveats do
+    discontinued
+  end
 end

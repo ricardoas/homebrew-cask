@@ -1,14 +1,13 @@
 cask 'openra' do
-  version '20151224'
-  sha256 '2c3f43839b6626e5c739d28c332e9f3b03c0ef4b0fd0c76980f3c55044c90dbb'
+  version '20161019'
+  sha256 '216ed0d307a57b7c7c5d8e304ba227e11548aabfa696247446ada5e9f88e5e00'
 
-  # github.com is the official download host per the vendor homepage
+  # github.com/OpenRA/OpenRA was verified as official when first introduced to the cask
   url "https://github.com/OpenRA/OpenRA/releases/download/release-#{version}/OpenRA-release-#{version}.zip"
   appcast 'https://github.com/OpenRA/OpenRA/releases.atom',
-          checkpoint: '6375065250a8ecd493ac7e19b37e60c18f57c28883a74458455fe751ac155bf0'
+          checkpoint: 'da02f72b8d7631c584ba88626c1dc82bec737f2ea0de0d1edb41e6a3ca6b800f'
   name 'OpenRA'
   homepage 'http://www.openra.net/'
-  license :gpl
 
   depends_on cask: 'mono-mdk'
 

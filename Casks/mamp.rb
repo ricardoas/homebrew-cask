@@ -1,11 +1,15 @@
 cask 'mamp' do
-  version '3.5'
-  sha256 '9961cc2a96cb23388a64e48e0bda7a2d5c4d555c16801e15571f548b185438d9'
+  if MacOS.version <= :mavericks
+    version '3.5.2'
+    sha256 'b935d118b6e14d43cf2570be2a05166a15b824c3edc0ede98cc30e6ab5af3697'
+  else
+    version '4.1.1'
+    sha256 '49b878490e133cdd79e0c6c7034d0f9395108aecab6bff4412fbd5558b626f73'
+  end
 
   url "https://downloads.mamp.info/MAMP-PRO/releases/#{version}/MAMP_MAMP_PRO_#{version}.pkg"
   name 'MAMP'
   homepage 'https://www.mamp.info/'
-  license :freemium
 
   pkg "MAMP_MAMP_PRO_#{version}.pkg"
 

@@ -1,11 +1,13 @@
 cask 'flightgear' do
-  version '3.4.0'
-  sha256 '17ac1c274d0256a17229b5cd7c77a44cdaa521e555a474301754e72d17c735cb'
+  version '2016.4.4'
+  sha256 '01a79d6d0125ca26a36a1b9307851ab16eb9aa04c833ba448020bb630400783e'
 
-  url "http://download.flightgear.org/flightgear/MacOSX/FlightGear-#{version}.dmg"
+  # sourceforge.net/flightgear was verified as official when first introduced to the cask
+  url "https://downloads.sourceforge.net/flightgear/FlightGear-#{version}.dmg"
+  appcast 'https://sourceforge.net/projects/flightgear/rss',
+          checkpoint: '6e65fda2c7dc92cfb997b405dacdea555990cb409c51a2a7f013d30119a1713d'
   name 'FlightGear'
   homepage 'http://www.flightgear.org/'
-  license :gpl
 
   app 'FlightGear.app'
 end

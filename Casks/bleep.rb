@@ -1,14 +1,13 @@
 cask 'bleep' do
-  version '1.1.3'
-  sha256 '685a7f446c091e52a568a0d3333f40d5412830c6ae54d1038fe2f5df219633c2'
+  version '1.1.5'
+  sha256 'b04ff847d00490354882ec9ca554e4b249483300665cec2735798aa8b8e12b3a'
 
   # utorrent.com was verified as official when first introduced to the cask
   url 'https://download-new.utorrent.com/endpoint/bleep/os/osx/track/stable/'
   appcast 'https://bleeposx.bittorrent.com/appcast.xml',
-          checkpoint: 'bc0518c59ecb182db88507556d4e5765723c41d5467219901487604d0800d0bf'
+          checkpoint: 'e6b158babeedf088fc5883866c20259a76bfb5c826ae3a92ed6fa8ebaf15bb84'
   name 'BitTorrent Bleep'
   homepage 'http://www.bleep.pm/'
-  license :gratis
 
   app 'Bleep.app'
 

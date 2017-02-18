@@ -2,13 +2,12 @@ cask 'kindlepreviewer' do
   version :latest
   sha256 :no_check
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url 'https://kindlepreviewer.s3.amazonaws.com/KindlePreviewer.zip'
+  # s3.amazonaws.com/kindlepreviewer3 was verified as official when first introduced to the cask
+  url 'https://s3.amazonaws.com/kindlepreviewer3/KindlePreviewerInstaller.pkg'
   name 'Kindle Previewer'
-  homepage 'https://www.amazon.com/gp/feature.html/?docId=1000765261'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.amazon.com/gp/feature.html/?docId=1003018611'
 
-  pkg 'KindlePreviewer.pkg'
+  pkg 'KindlePreviewerInstaller.pkg'
 
   uninstall pkgutil: 'Amazon.Kindle.Previewer.pkg'
 end

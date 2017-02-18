@@ -1,11 +1,10 @@
 cask 'vectr' do
-  version '0.1.8'
-  sha256 'c160ed7897c42664b3792757deeb16775719ab1bf9ff0c3d4be47299e8a5a238'
+  version '0.1.12'
+  sha256 '73cad5c49f202d5b2b18b2ad813c2e7d4e4737107c3f1f95c77e66add7a77933'
 
-  url "https://download.vectr.com/desktop/vectr-mac-#{version}.zip"
+  url "http://download.vectr.com/desktop/#{version}/mac/Vectr-mac.dmg"
   name 'Vectr'
-  homepage 'https://vectr.com'
-  license :gratis
+  homepage 'https://vectr.com/'
 
-  app "vectr-mac-#{version}/Vectr.app"
+  app 'Vectr.app'
 end

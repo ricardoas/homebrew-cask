@@ -1,23 +1,24 @@
 cask 'karabiner' do
-  version '10.18.0'
-  sha256 '794af8886df2bc8329f10cff553ad43e189b12dfcf18cfb3d10320f05834ea1e'
+  version '10.22.0'
+  sha256 'b05560f26b16c19eea076f5589b58124dc9346c69be3df25a23c65c77f6d9554'
 
   url "https://pqrs.org/osx/karabiner/files/Karabiner-#{version}.dmg"
   appcast 'https://pqrs.org/osx/karabiner/files/appcast.xml',
-          checkpoint: '9b35db4d983f9b43c454f1564f8438839c1c7ad391c7c839f0f7599c7a93b1d3'
+          checkpoint: '38438b15c3af9c23215ac7d23af13c0b32cbc7b06e96ed02f7b50c29b65924b2'
   name 'Karabiner'
   homepage 'https://pqrs.org/osx/karabiner/'
-  license :public_domain
 
   auto_updates true
 
   pkg 'Karabiner.sparkle_guided.pkg'
-  binary '/Applications/Karabiner.app/Contents/Library/vendor/bin/blueutil'
-  binary '/Applications/Karabiner.app/Contents/Library/utilities/bin/warp-mouse-cursor-position'
+  binary '/Applications/Karabiner.app/Contents/Library/bin/karabiner'
 
   uninstall quit:    'org.pqrs.Karabiner',
-            pkgutil: 'org.pqrs.driver.Karabiner',
-            kext:    'org.pqrs.driver.Karabiner'
+            pkgutil: 'org.pqrs.Karabiner',
+            script:  {
+                       executable: '/Library/Application Support/org.pqrs/Karabiner/uninstall.sh',
+                       sudo:       true,
+                     }
 
   zap       delete: [
                       '~/Library/Application Support/Karabiner',

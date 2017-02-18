@@ -1,11 +1,10 @@
 cask 'google-adwords-editor' do
-  version '11.1.3'
-  sha256 '3fe702bb8edb10a214d0c2feefe4a0da8a2e7a8555581f6414de9a2807a0440a'
+  version '11.5.9.0'
+  sha256 'f04ad235ebd7a4893623f5c26e8c073d8710b4bbaf918d437a9a118fe7bbb86f'
 
   url "https://dl.google.com/adwords_editor/#{version}/Google_AdWords_Editor.dmg"
   name 'Google AdWords Editor'
-  homepage 'https://www.google.com/intl/en/adwordseditor/'
-  license :gratis
+  homepage 'https://adwords.google.com/home/tools/adwords-editor/?zd=1'
 
   app 'Google AdWords Editor.app'
 end

@@ -1,16 +1,13 @@
 cask 'tunnelblick' do
-  if MacOS.release <= :snow_leopard
-    version '3.5.8_build_4270.4530'
-    sha256 'd634a9a5fd06f95c7325987197fb7890119bf0a40a3958284814958a14c20ce3'
-  else
-    version '3.6.0a_build_4543.4546'
-    sha256 '0850dffd539cc60097d29fdb8a8e6b1cf83eeec7ea8bc7c4a821df69fe817441'
-  end
+  version '3.7.0,4790'
+  sha256 '5053038aa8caf7dea66dcab11d6d240672216e6546eff4c2622e216c61af85e5'
 
-  url "https://www.tunnelblick.net/release/Tunnelblick_#{version}.dmg"
+  # github.com/Tunnelblick/Tunnelblick/releases/download was verified as official when first introduced to the cask
+  url "https://github.com/Tunnelblick/Tunnelblick/releases/download/v#{version.before_comma}/Tunnelblick_#{version.before_comma}_build_#{version.after_comma}.dmg"
+  appcast 'https://github.com/Tunnelblick/Tunnelblick/releases.atom',
+          checkpoint: '2947732dcfc2fb59bf51991a4f07088055de40c37fa320e615951e528a60e07c'
   name 'Tunnelblick'
-  homepage 'https://www.tunnelblick.net'
-  license :gpl
+  homepage 'https://www.tunnelblick.net/'
 
   auto_updates true
   depends_on macos: '>= :tiger'
@@ -19,6 +16,14 @@ cask 'tunnelblick' do
 
   uninstall launchctl: 'net.tunnelblick.tunnelblick.LaunchAtLogin',
             quit:      'net.tunnelblick.tunnelblick'
+
+  zap delete: [
+                '~/Library/Application Support/Tunnelblick',
+                '~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/net.tunnelblick.tunnelblick.help',
+                '~/Library/Caches/net.tunnelblick.tunnelblick',
+                '~/Library/LaunchAgents/net.tunnelblick.tunnelblick.LaunchAtLogin.plist',
+                '~/Library/Preferences/net.tunnelblick.tunnelblick.plist',
+              ]
 
   caveats <<-EOS.undent
     For security reasons, #{token} must be installed to /Applications,

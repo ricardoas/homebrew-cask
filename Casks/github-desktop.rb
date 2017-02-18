@@ -1,16 +1,17 @@
 cask 'github-desktop' do
-  version '217'
-  sha256 'ce74276821bc338b400975494d40eecc4cfd88e819963c6090d564b6c13059ad'
+  version '222'
+  sha256 'b7d001b36a88f75f9c6102de8fbf683ab940caa2b654fd7a1a0f367be689fc02'
 
   url "https://mac-installer.github.com/mac/GitHub%20Desktop%20#{version}.zip"
   appcast 'https://central.github.com/mac/appcast.xml',
-          checkpoint: '7344dfebee3fb3b078e7659cae776884286bd08a92b05267dfd3ef6ae8593429'
+          checkpoint: 'b6482e6fe6594a1a9aad10b645fc551c9e16d0cd8deb4cedbfca6adaae43f1c2'
   name 'GitHub Desktop'
   homepage 'https://desktop.github.com/'
-  license :gratis
+
+  auto_updates true
 
   app 'GitHub Desktop.app'
-  binary 'GitHub Desktop.app/Contents/MacOS/github_cli', target: 'github'
+  binary "#{appdir}/GitHub Desktop.app/Contents/MacOS/github_cli", target: 'github'
 
   postflight do
     suppress_move_to_applications
@@ -25,6 +26,7 @@ cask 'github-desktop' do
                 '~/Library/Application Support/GitHub for Mac',
                 '~/Library/Application Support/ShipIt_stderr.log',
                 '~/Library/Application Support/ShipIt_stdout.log',
+                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.github.github.sfl',
                 '~/Library/Application Support/com.github.GitHub',
                 '~/Library/Application Support/com.github.GitHub.ShipIt',
                 '~/Library/Caches/GitHub for Mac',
@@ -32,5 +34,6 @@ cask 'github-desktop' do
                 '~/Library/Containers/com.github.GitHub.Conduit',
                 '~/Library/Preferences/com.github.GitHub.LSSharedFileList.plist',
                 '~/Library/Preferences/com.github.GitHub.plist',
-              ]
+              ],
+      rmdir:  '~/.config/git'
 end

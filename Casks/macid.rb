@@ -1,11 +1,10 @@
 cask 'macid' do
-  version '1.3.1.3'
-  sha256 '26277a3493af134483704aaf35315d2a1a098cafdaded9a088aea4f4391f89c5'
+  version '1.3.5'
+  sha256 'fdb37485748ad774e6e78e5d9134ce355aa5227e2926206a0e2314cc660ae452'
 
-  url "https://macid.co/app/#{version}/MacID-for-OS-X.zip"
+  url "https://macid.co/app/#{version}/MacID%20for%20macOS.zip"
   name 'MacID'
   homepage 'https://macid.co/'
-  license :gratis
 
   depends_on macos: '>= :yosemite'
 

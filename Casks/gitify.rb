@@ -1,13 +1,12 @@
 cask 'gitify' do
-  version '0.0.19'
-  sha256 '21c3e11efaf0089fc3d9805d4158d5f6c031639983106e730f91b618913ff7af'
+  version '1.1.0'
+  sha256 '5fd6fc08dc8aefa7199ac208dc91a0d98b5c0270b26f93f6471661a1c2632b45'
 
-  url "https://github.com/ekonstantinidis/gitify/releases/download/#{version}/gitify-osx.zip"
-  appcast 'https://github.com/ekonstantinidis/gitify/releases.atom',
-          checkpoint: '2518cea1da222ddeb581507ea7ba17cc58ba10dd5b56122033114dfd9a6fbef7'
+  url "https://github.com/manosim/gitify/releases/download/#{version}/gitify-osx.zip"
+  appcast 'https://github.com/manosim/gitify/releases.atom',
+          checkpoint: '793158faf626b7fff00df7204b0b8061fc6128384be82d7e2bdf5556d89e2276'
   name 'Gitify'
-  homepage 'https://github.com/ekonstantinidis/gitify'
-  license :oss
+  homepage 'https://github.com/manosim/gitify'
 
   app 'Gitify.app'
 end

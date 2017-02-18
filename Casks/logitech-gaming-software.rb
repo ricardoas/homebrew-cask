@@ -1,13 +1,12 @@
 cask 'logitech-gaming-software' do
-  version '8.60.313'
-  sha256 'f83d5c573fc4236454471158d88153cb970996211b1cbd27180f906fccc7d9c1'
+  version '8.87.92'
+  sha256 'acc6a474d1cde82a7e21fe24f5ce32af0ee7307ec7d1e2dd4389249c83e5c7c5'
 
-  url "http://download01.logitech.com/web/ftp/pub/techsupport/gaming/LogitechSetup_#{version}.zip"
+  url "https://download01.logitech.com/web/ftp/pub/techsupport/gaming/LogitechSetup_#{version}.zip"
   name 'Logitech Gaming Software'
-  homepage 'http://support.logitech.com/en_us/downloads'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://support.logitech.com/en_us/downloads'
 
-  pkg 'LogiGamingSetup.mpkg'
+  pkg 'LogitechGamingInstaller.app/Contents/Resources/LogiGamingSetup.mpkg'
 
   uninstall script:  '/Applications/Logitech/Uninstaller.app/Contents/Resources/UninstallScript.sh',
             pkgutil: [

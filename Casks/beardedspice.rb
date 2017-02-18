@@ -1,13 +1,19 @@
 cask 'beardedspice' do
-  version '1.2.3'
-  sha256 'dd2bed9071fc54debee3f3137829e690c1f1e5dc8581283b299e9f4172489c2e'
+  version '2.1.3'
+  sha256 '369bf1650947592d97897305b76be419125cc389894141b45f8c7cecf9185c88'
 
   url "https://github.com/beardedspice/beardedspice/releases/download/v#{version}/BeardedSpice-#{version}.zip"
   appcast 'https://github.com/beardedspice/beardedspice/releases.atom',
-          checkpoint: '506993fb1eae07aa873bea676aba8eea37d37e36be2900a96ea9b02a0c475305'
+          checkpoint: '495b04c2d246c97aacc389c6f3c993394be30d3c1db0b899b12da612e4384dd5'
   name 'BeardedSpice'
   homepage 'https://github.com/beardedspice/beardedspice/'
-  license :oss
+
+  auto_updates true
 
   app 'BeardedSpice.app'
+
+  zap delete: [
+                '~/Library/Caches/com.beardedspice.BeardedSpice',
+                '~/Library/Preferences/com.beardedspice.BeardedSpice.plist',
+              ]
 end

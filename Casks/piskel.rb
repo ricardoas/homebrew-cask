@@ -1,12 +1,13 @@
 cask 'piskel' do
-  version '0.5.5.1'
-  sha256 '88a8f90bdbd852c4b9d957b02f9af67fd8c076ababdf4009ad8b4985a90f38e3'
+  version '0.8.0'
+  sha256 'f7d00410dfdab9cf74b1b51c083a62408d0aafde734d470aa9d6a6419d4255aa'
 
-  # dropboxusercontent.com is the official download host per the vendor homepage
+  # dl.dropboxusercontent.com/u/17803671 was verified as official when first introduced to the cask
   url "https://dl.dropboxusercontent.com/u/17803671/piskel/standalone/mac/piskel-#{version}.dmg"
+  appcast 'https://github.com/juliandescottes/piskel/releases.atom',
+          checkpoint: '570dd72714a3996487ff54f10e220b8eba1193d8465a612e9a1fbb09f18e5c71'
   name 'Piskel'
-  homepage 'http://www.piskelapp.com'
-  license :affero
+  homepage 'http://www.piskelapp.com/'
 
   app 'Piskel.app'
 end

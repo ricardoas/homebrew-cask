@@ -1,16 +1,12 @@
 cask 'pencil' do
-  version '2.0.6'
-  sha256 'dacd76c658b12101457d17a4ade0b3f9c6a012f8eddacd379c41e372545ffac6'
+  version '2.0.21'
+  sha256 '19f8d5a82eb79ad02d8a669a7bb178d0036b17314e81c94845da144d87dd8acd'
 
-  # storage.googleapis.com is the official download host per the vendor homepage
-  url "https://storage.googleapis.com/google-code-archive-downloads/v1/code.google.com/evoluspencil/Pencil-#{version}-mac.tar.bz2"
+  url "https://github.com/prikhi/pencil/releases/download/v#{version}/Pencil-#{version}-mac-osx.zip"
+  appcast 'https://github.com/prikhi/pencil/releases.atom',
+          checkpoint: '0201d816a97457eb9aacd6356299dcb0c39d135adce4e8c3ac11922c30a0ddad'
   name 'Pencil'
-  homepage 'http://pencil.evolus.vn'
-  license :gpl
+  homepage 'https://github.com/prikhi/pencil'
 
   app 'Pencil.app'
-
-  caveats do
-    discontinued
-  end
 end

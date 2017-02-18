@@ -1,13 +1,14 @@
 cask 'arq' do
-  version '4.15.1'
-  sha256 '537d7872e2843a191bb1090e708bb48aedfa83dd2db616da25b792c013b8eb33'
+  version '5.7.3'
+  sha256 '1850a7dcf31bf5f95e3ee8adbfa8e73cda51faa7eeef4df74c193ab31781d7d1'
 
   url "https://www.arqbackup.com/download/Arq_#{version}.zip"
   appcast "https://www.arqbackup.com/download/arq#{version.major}.xml",
-          checkpoint: '537720fc6b4b69b44ccc36ff81198d378fedae8a2783589cbbd8d730a98396ea'
+          checkpoint: '93d4846b8ba67dae7ec3a25ed8bb8dedb2675db89c25b4883c586ad82a461d4f'
   name 'Arq'
   homepage 'https://www.arqbackup.com/'
-  license :commercial
+
+  auto_updates true
 
   app 'Arq.app'
 

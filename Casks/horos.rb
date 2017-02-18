@@ -1,12 +1,10 @@
 cask 'horos' do
-  version '1.1.6'
-  sha256 '140e7c8fc10a7732a24ef53f885b8929aac2e7e7ac5db71c78ce3b4605c13ed0'
+  version '2.0.0'
+  sha256 '1af3252b5166bfb48769b93eeba64fc42f79bbf6a88625df96ec4a359d117f51'
 
-  # dev-horos-project.pantheon.io was verified as official when first introduced to the cask
-  url "http://dev-horos-project.pantheon.io/wp-content/uploads/downloads/Horos#{version}.dmg"
+  url "https://www.horosproject.org/wp-content/uploads/downloads/Horos#{version}.dmg"
   name 'Horos – Free, open medical image viewer'
-  homepage 'http://www.horosproject.org'
-  license :gpl
+  homepage 'https://www.horosproject.org/'
 
   app 'Horos.app'
 end

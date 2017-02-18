@@ -1,14 +1,13 @@
 cask 'sling' do
-  version '4.8.10.297'
-  sha256 '5460cf66dc78525ee01903cd02b11b0bc53e77ce79fcc7d70b862b7fbf7308df'
+  version '5.0.0.321'
+  sha256 '7422424417eff1ea73f9b465dfd270639b9f37042d02b38fcb80fe3d25196fe3'
 
-  # move.tv is the official download host per the vendor homepage
+  # webapp.movetv.com was verified as official when first introduced to the cask
   url 'http://webapp.movetv.com/player/osx/slingtv.dmg'
   appcast 'http://webapp.movetv.com/config/desktopupdate/sling/osx/production/Sling-snowleopard-sparkle.xml',
-          checkpoint: '38bcead9728f040d6b2b9d052222e003aa62a40f027d20019b7a38d0c355658a'
+          checkpoint: 'de5d79e53e3360f27b4574c426e3662cb93efabd78f3026ed1c8639353e64d8b'
   name 'Sling TV'
   homepage 'http://www.sling.com/'
-  license :gratis
 
   app 'Sling.app'
 

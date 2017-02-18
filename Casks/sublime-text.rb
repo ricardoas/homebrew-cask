@@ -1,26 +1,26 @@
 cask 'sublime-text' do
-  version '2.0.2'
-  sha256 '906e71e19ae5321f80e7cf42eab8355146d8f2c3fd55be1f7fe5c62c57165add'
+  version '3126'
+  sha256 '2bbd357cd29303b05770ef479e2f86ea8166ac43062ae9e84dc07abfd0ce2c96'
 
-  # rackcdn.com is the official download host per the vendor homepage
-  url "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20#{version}.dmg"
-  appcast 'https://www.sublimetext.com/updates/2/stable/appcast_osx.xml',
-          checkpoint: '1f88d22b2ed5ba5a9213accf500ca8f1a9723b391fbbbc45ffb23cd98c98519c'
+  url "https://download.sublimetext.com/Sublime%20Text%20Build%20#{version}.dmg"
+  appcast 'https://www.sublimetext.com/updates/3/stable/appcast_osx.xml',
+          checkpoint: '34717c4ad8bc4fd51b211effcc67fb84a04acff65126a77ba9789811659cb6d6'
   name 'Sublime Text'
-  homepage 'https://www.sublimetext.com/2'
-  license :closed
+  homepage 'https://www.sublimetext.com/3'
 
-  app 'Sublime Text 2.app'
-  binary 'Sublime Text 2.app/Contents/SharedSupport/bin/subl'
+  auto_updates true
+  conflicts_with cask: 'caskroom/versions/sublime-text-dev'
+
+  app 'Sublime Text.app'
+  binary "#{appdir}/Sublime Text.app/Contents/SharedSupport/bin/subl"
+
+  uninstall quit: 'com.sublimetext.3'
 
   zap delete: [
-                '~/Library/Application Support/Sublime Text 2',
-                '~/Library/Preferences/com.sublimetext.2.plist',
-                '~/Library/Caches/com.sublimetext.2',
-                '~/Library/Saved Application State/com.sublimetext.2.savedState',
+                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.sublimetext.3.sfl',
+                '~/Library/Application Support/Sublime Text 3',
+                '~/Library/Caches/com.sublimetext.3',
+                '~/Library/Preferences/com.sublimetext.3.plist',
+                '~/Library/Saved Application State/com.sublimetext.3.savedState',
               ]
-
-  caveats do
-    files_in_usr_local
-  end
 end

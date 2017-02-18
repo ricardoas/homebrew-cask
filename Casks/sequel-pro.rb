@@ -1,14 +1,13 @@
 cask 'sequel-pro' do
-  version '1.1.1'
-  sha256 'e76c20d52d559157deca648c6ca9cf590af0eb3b08313fd0817b19e7fd3a1550'
+  version '1.1.2'
+  sha256 '7b34fd63c13e9e9ca4f87d548241ff9df9a266b554af23549efd7be006f387c6'
 
   # github.com/sequelpro/sequelpro was verified as official when first introduced to the cask
-  url "https://github.com/sequelpro/sequelpro/releases/download/#{version}/sequel-pro-#{version}.dmg"
+  url "https://github.com/sequelpro/sequelpro/releases/download/release-#{version}/sequel-pro-#{version}.dmg"
   appcast 'https://github.com/sequelpro/sequelpro/releases.atom',
-          checkpoint: 'ea7d94cb740cc1f7b9d941d5b8a344434986f6d07029fdf7b3883347e5347fc6'
+          checkpoint: '47c9e6a368cfced1f05cfe8d4052fa582c9071b2bfe16c42d2677066f6d7ea10'
   name 'Sequel Pro'
-  homepage 'http://www.sequelpro.com/'
-  license :mit
+  homepage 'https://www.sequelpro.com/'
 
   depends_on macos: '>= :leopard'
 

@@ -1,13 +1,12 @@
 cask 'vinoteka' do
-  version '3.4.8'
-  sha256 'cc6520196c4725f21385492ea8a71001ffa3c4ba3439a499449a159d7f7239f4'
+  version '3.5.1'
+  sha256 '21b85c94f51d77e56a0dea29f619ee1a12191cfaa04c1d81b7b7113ae85cad19'
 
   url 'http://download.vinotekasoft.com/Vinoteka.zip'
   appcast 'http://download.vinotekasoft.com/vinoteka_update.xml',
-          checkpoint: '4ba9b7e1b45d4a69750b3a2eac9a84b6b59a1881d76eecf2c981fffeacfe302f'
+          checkpoint: '7e65d66ceafa9deb3af5758197ede0f893b2858b1dd9272e870b64a24c887842'
   name 'Vinoteka'
-  homepage 'http://www.vinotekasoft.com/'
-  license :commercial
+  homepage 'https://www.vinotekasoft.com/'
 
   app 'Vinoteka.app'
 end

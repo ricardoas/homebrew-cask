@@ -1,25 +1,50 @@
 cask 'mactex' do
-  version '20150613'
-  sha256 'c5f5b0fd853a17dab6e844fb5e893804af78d938fa18ee94ec3b257611a95c12'
+  version '20161009'
+  sha256 'b44873d445881900401d0e0eddccc78140b9ed51b538364889eb8529350d5bd7'
 
-  url 'http://tug.org/cgi-bin/mactex-download/MacTeX.pkg'
-  appcast 'http://www.tug.org/mactex/downloading.html#checksum',
-          checkpoint: 'ef3bd331dbea7053d322e153a6a2c2db98ab93f70e0689e9eef5cf57220606ce'
+  # mirror.ctan.org/systems/mac/mactex was verified as official when first introduced to the cask
+  url "http://mirror.ctan.org/systems/mac/mactex/mactex-#{version}.pkg"
+  appcast 'https://www.tug.org/mactex/downloading.html',
+          checkpoint: 'dba7dc2fba9b2dd846cfba460f1121162c4f68d580dd2a485f7f929a1d7ec6be'
   name 'MacTeX'
   homepage 'https://www.tug.org/mactex/'
-  license :oss
 
-  pkg 'MacTeX.pkg'
+  pkg "mactex-#{version}.pkg"
 
   uninstall pkgutil: [
-                       'org.tug.mactex.ghostscript9.16',
-                       'org.tug.mactex.gui2015',
-                       'org.tug.mactex.texlive2015',
+                       'org.tug.mactex.ghostscript9.19',
+                       'org.tug.mactex.gui2016',
+                       'org.tug.mactex.texlive2016',
                      ],
             delete:  [
+                       '/usr/local/texlive/2016',
                        '/Applications/TeX',
                        '/Library/PreferencePanes/TeXDistPrefPane.prefPane',
                        '/etc/paths.d/TeX',
                        '/etc/manpaths.d/TeX',
                      ]
+
+  zap delete: [
+                '/usr/local/texlive/texmf-local',
+                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/texshop.sfl',
+                '~/Library/Application Support/BibDesk',
+                '~/Library/Application Support/TeXShop',
+                '~/Library/Application Support/TeX Live Utility',
+                '~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/TeXShop.help',
+                '~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/edu.ucsd.cs.mmccrack.bibdesk.help',
+                '~/Library/Caches/edu.ucsd.cs.mmccrack.bibdesk',
+                '~/Library/Caches/fr.chachatelier.pierre.LaTeXiT',
+                '~/Library/Caches/TeXShop',
+                '~/Library/Preferences/edu.ucsd.cs.mmccrack.bibdesk.plist',
+                '~/Library/Preferences/Excalibur Preferences',
+                '~/Library/Preferences/fr.chachatelier.pierre.LaTeXiT.plist',
+                '~/Library/Preferences/TeXShop.plist',
+                '~/Library/Saved Application State/edu.bucknell.Excalibur.savedState',
+                '~/Library/texlive/2016',
+                '~/Library/TeXShop',
+              ],
+      rmdir:  [
+                '/usr/local/texlive',
+                '~/Library/texlive',
+              ]
 end

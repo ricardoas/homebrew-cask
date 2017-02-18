@@ -1,15 +1,12 @@
 cask 'hype' do
-  version '3.5.1-526'
-  sha256 'a6bbfef822d08c94b02a715c1f76bb95174cc2be92edcb141ca9c0563478de65'
+  version '3.5.5'
+  sha256 '8a72e1167440364a397b674422082edd19a62d8fc8a5463540c7ea7324611c93'
 
-  url "http://static.tumult.com/hype/download/Hype-#{version.sub(%r{^.*?-}, '')}.app.zip"
+  url 'https://tumult.com/hype/download/Hype.zip'
   appcast 'https://tumult.com/hype/appcast_hype2.xml',
-          checkpoint: '6dacb16cbcb5a3bc2790d81740a18ecded789c0b72257063b710a8c8a105c0b6'
+          checkpoint: '4a3eb7ade6eb6d508225db47c0a9e11b67d70f5310b797453bfe465b331c4bd1'
   name 'Tumult Hype'
   homepage 'https://tumult.com/hype/'
-  license :commercial
 
-  # Renamed for consistency: app name is different in the Finder and in a shell.
-  # Original discussion: https://github.com/caskroom/homebrew-cask/pull/15762
-  app 'Hype2.app', target: "Hype #{version.to_i}.app"
+  app "Hype #{version.major}.app"
 end

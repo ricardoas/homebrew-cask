@@ -1,11 +1,14 @@
 cask 'vivaldi' do
-  version '1.0.403.24'
-  sha256 :no_check # required as upstream package is updated in-place
+  version '1.7.735.46'
+  sha256 'e92346165841f38975eba46cd9ef7bd371c4090101f33d742069d07563d796f3'
 
-  url "https://vivaldi.com/download/stable/Vivaldi.#{version}.dmg"
+  url "https://downloads.vivaldi.com/stable/Vivaldi.#{version}.dmg"
+  appcast 'https://update.vivaldi.com/update/1.0/mac/appcast.xml',
+          checkpoint: '7f322b89efcdd172882b514cfc1b0674877a1181d61cfd7a215fd4d78ea3d6ec'
   name 'Vivaldi'
-  homepage 'https://vivaldi.com'
-  license :gratis
+  homepage 'https://vivaldi.com/'
+
+  auto_updates true
 
   app 'Vivaldi.app'
 

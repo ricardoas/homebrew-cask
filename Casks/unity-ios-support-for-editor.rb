@@ -1,11 +1,10 @@
 cask 'unity-ios-support-for-editor' do
-  version '5.3.3f1,910d71450a97'
-  sha256 '00beddcfa79bafdddc6173099874ccc799772ade8524943c12c82b00ef4efa4f'
+  version '5.5.0f3,38b4efef76f0'
+  sha256 'd79c39acd653d35c2e34df4636ccbd957e8f1ca0a137309d9cbd07227d8c447d'
 
   url "http://netstorage.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-#{version.before_comma}.pkg"
   name 'Unity iOS Build Support'
   homepage 'https://unity3d.com/unity/'
-  license :commercial
 
   depends_on cask: 'unity'
 

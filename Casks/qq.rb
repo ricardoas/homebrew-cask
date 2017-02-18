@@ -1,19 +1,26 @@
 cask 'qq' do
-  version '4.1.1'
-  sha256 '8485af99fc58ce9f8d70d536dd3e4d187f0bcce0f0902d8242c7a8665065f96c'
+  version '5.4.1'
+  sha256 'd779ad6829fab162811e5a93b0b3075750f1abe2d01711c25a52378640406966'
 
-  url "http://dldir1.qq.com/qqfile/QQforMac/QQ_V#{version}.dmg"
+  url "https://dldir1.qq.com/qqfile/QQforMac/QQ_V#{version}.dmg"
   name 'QQ'
-  homepage 'http://im.qq.com/macqq/'
-  license :commercial
+  homepage 'https://im.qq.com/macqq/'
 
   app 'QQ.app'
 
   uninstall quit: 'com.tencent.qq'
 
   zap delete: [
+                '~/Library/Application Scripts/FN2V63AD2J.com.tencent.ScreenCapture2',
+                '~/Library/Application Scripts/FN2V63AD2J.com.tencent.localserver2',
+                '~/Library/Application Scripts/com.tencent.qq',
+                '~/Library/Caches/com.tencent.qq',
+                '~/Library/Containers/FN2V63AD2J.com.tencent.ScreenCapture2',
+                '~/Library/Containers/FN2V63AD2J.com.tencent.localserver2',
                 '~/Library/Containers/com.tencent.qq',
-                '~/Library/Containers/com.tencent.localserver',
-                '~/Library/Containers/com.tencent.ScreenCapture',
+                '~/Library/Group Containers/FN2V63AD2J.com.tencent',
+                '~/Library/Preferences/com.tencent.qq.plist',
+                '~/Library/Saved Application State/com.tencent.qq.savedState',
+                '~/Library/WebKit/com.tencent.qq',
               ]
 end

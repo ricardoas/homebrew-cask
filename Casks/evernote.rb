@@ -1,19 +1,18 @@
 cask 'evernote' do
-  if MacOS.release <= :snow_leopard
+  if MacOS.version <= :snow_leopard
     version '5.5.2'
     sha256 '06b6da6d74ccab08deabfdd4c9519b9bc7f7ef0f0db2a0e8b0cd72e781f2e0ed'
     url 'https://cdn1.evernote.com/mac/release/Evernote_402634.dmg'
   else
-    version '6.5_453172'
-    sha256 '7a25e6d0648c4af23e20d860bde853d313b04ce12868dd1ace9e30d0fee45ebd'
+    version '6.10_454267'
+    sha256 '44d44b402c547a01a8a4fe377558e95669bf5771387e2ddfe85e58ce5b122946'
     url "https://cdn1.evernote.com/mac-smd/public/Evernote_RELEASE_#{version}.dmg"
-    appcast 'https://update.evernote.com/public/ENMac/EvernoteMacUpdate.xml',
-            checkpoint: '4f5a9408b7cc6f639518ce3825914691e176ad57d8fdf5a399b84d26d16ad8a8'
+    appcast 'https://update.evernote.com/public/ENMacSMD/EvernoteMacUpdate.xml',
+            checkpoint: '163dd5bfdef899742f67114eca8dc59cd31c153f8d542d80fd53a4a7e2b25303'
   end
 
   name 'Evernote'
   homepage 'https://evernote.com/'
-  license :gratis
 
   auto_updates true
 

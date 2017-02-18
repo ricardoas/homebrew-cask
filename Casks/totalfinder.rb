@@ -1,11 +1,12 @@
 cask 'totalfinder' do
-  version '1.7.10'
-  sha256 '18bc9083a556063a6650f7a18cfd5a763139383c89d8fef7356831e53812807e'
+  version '1.8.2'
+  sha256 '1596aed64712a33c337f0782a8f5aa538022a686d1985a63628dd32278617b65'
 
   url "http://downloads.binaryage.com/TotalFinder-#{version}.dmg"
   name 'TotalFinder'
-  homepage 'http://totalfinder.binaryage.com'
-  license :commercial
+  homepage 'https://totalfinder.binaryage.com/'
+
+  depends_on macos: '>= :mavericks'
 
   pkg 'TotalFinder.pkg'
 

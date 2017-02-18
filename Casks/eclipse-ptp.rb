@@ -1,14 +1,12 @@
 cask 'eclipse-ptp' do
-  version '4.5.2'
-  sha256 'ca5b762715346f2a40a5c64bf355d1f6916afe73c2ecf2e6070b2c380c2d0a34'
+  version '4.6.2,neon:2'
+  sha256 '320bc94c93ac2c9486080e265282708eccd5bcc119d9057aa760feb2bf7c0bed'
 
-  url 'https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/mars/2/eclipse-parallel-mars-2-macosx-cocoa-x86_64.tar.gz&r=1'
-  name 'Eclipse Parallel Tools Platform'
+  url "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/#{version.after_comma.before_colon}/#{version.after_colon}/eclipse-parallel-#{version.after_comma.before_colon}-#{version.after_colon}-macosx-cocoa-x86_64.tar.gz&r=1"
+  name 'Eclipse for Parallel Application Developers'
   homepage 'https://eclipse.org/'
-  license :eclipse
 
   depends_on macos: '>= :leopard'
-  depends_on arch: :x86_64
 
   app 'Eclipse.app'
 end

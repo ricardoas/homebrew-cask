@@ -1,11 +1,11 @@
 cask 'bathyscaphe' do
-  version '270-v900'
-  sha256 'ca65c250dad51d54ab8dc45c13a8dce74f50b0bc84b0d2dba50596e6cd7d5cf2'
+  version '280-v988'
+  sha256 '12f1036e7881a9a8bd61cfe0493fe7c4684e7b139438018790b219e04e7b1c30'
 
+  # bitbucket.org/bathyscaphe/public/downloads was verified as official when first introduced to the cask
   url "https://bitbucket.org/bathyscaphe/public/downloads/BathyScaphe-#{version}.dmg"
   name 'BathyScaphe'
-  homepage 'http://bathyscaphe.bitbucket.org/'
-  license :oss
+  homepage 'https://bathyscaphe.bitbucket.io/'
 
   app 'BathyScaphe.app'
 end

@@ -2,13 +2,24 @@ cask 'logitech-harmony' do
   version '7.8.1'
   sha256 '13a100211fb18569563c9d9bbe6c231cbfaa50989df0b471703ec942be2ecafb'
 
-  # navisite.net is the official download host per the vendor homepage
-  url "http://logitech-sjca.navisite.net/web/ftp/pub/techsupport/harmony/LogitechHarmonyRemoteSoftware#{version}-OSX.dmg"
+  url "https://cdn-cx-images.dynamite.myharmony.com/software/LogitechHarmonyRemoteSoftware#{version}-OSX.dmg"
   name 'Logitech Harmony Remote Software'
-  homepage 'http://www.logitech.com/en-us/support/universal-remotes'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.myharmony.com/'
 
   pkg 'LogitechRemoteSoftware.pkg'
+
+  postflight do
+    # Replace the hard-coded 1.4 requirement with an equally hard-coded 1.6 requirement
+    system_command '/usr/bin/sed',
+                   args: [
+                           '-E',
+                           '-i',
+                           '.bak',
+                           '-e',
+                           's|<string>1\.4\*</string>|<string>1.6*</string>|',
+                           '/Applications/Logitech Harmony Remote Software.app/Contents/Info.plist',
+                         ]
+  end
 
   uninstall quit:    'com.logitech.harmony.cappuccino.client.logitech',
             kext:    [
@@ -17,4 +28,8 @@ cask 'logitech-harmony' do
                        'com.Belcarra.iokit.USBLAN_usbpart',
                      ],
             pkgutil: 'com.logitech.harmony.logitechRemoteSoftware.*'
+
+  caveats do
+    depends_on_java('6')
+  end
 end

@@ -1,13 +1,14 @@
 cask 'flux' do
-  version '36.6'
-  sha256 '613cdb8deee91dd50f266cecc1f10c859d8ba9aa6b0cf2a25156849eec46bb1a'
+  version '37.7'
+  sha256 'c4fe43b47c5adc0b066a78a60e99a5dc91466610d9a3660a85104f9fe32a1150'
 
-  url "https://justgetflux.com/mac/Flux#{version.dots_to_hyphens}.zip"
+  url "https://justgetflux.com/mac/Flux#{version}.zip"
   appcast 'https://justgetflux.com/mac/macflux.xml',
-          checkpoint: '8c96fbbbea24614bde904646ac83ebd852995bab8268c0c0e5297860c7a0f7e5'
+          checkpoint: 'f6127c732fe64848139f952b0ff08dcd4ba97f1a58d6599857d6268ad035b5ec'
   name 'f.lux'
   homepage 'https://justgetflux.com/'
-  license :gratis
+
+  auto_updates true
 
   app 'Flux.app'
 
@@ -17,5 +18,8 @@ cask 'flux' do
 
   uninstall login_item: 'Flux'
 
-  zap delete: '~/Library/Preferences/org.herf.Flux.plist'
+  zap delete: [
+                '~/Library/Preferences/org.herf.Flux.plist',
+                '~/Library/Caches/org.herf.Flux',
+              ]
 end

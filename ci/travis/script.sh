@@ -8,19 +8,19 @@
 # shellcheck disable=SC1090
 . "${TRAVIS_BUILD_DIR}/ci/travis/helpers.sh"
 
-enter_build_step
-
 header 'Running script.sh...'
 
-if any_casks_modified; then
-  modified_casks=($(modified_cask_files))
-  run developer/bin/audit_modified_casks "${TRAVIS_COMMIT_RANGE}"
+modified_ruby_files=($(git diff --name-only --diff-filter=AM "${TRAVIS_COMMIT_RANGE}" -- *.rb))
+
+for file in "${modified_ruby_files[@]}"; do
+  [[ "${file}" == 'Casks/'* ]] && modified_casks+=("${file}") || casks_wrong_dir+=("${file}")
+done
+
+if [[ ${#casks_wrong_dir[@]} -gt 0 ]]; then
+  odie "Casks added outside Casks directory: ${casks_wrong_dir[*]}"
+elif [[ ${#modified_casks[@]} -gt 0 ]]; then
+  run brew cask _audit_modified_casks "${TRAVIS_COMMIT_RANGE}"
   run brew cask style "${modified_casks[@]}"
+else
+  ohai 'No casks modified, skipping'
 fi
-
-if must_run_tests; then
-  run bundle exec rake test:coverage
-  run bundle exec rake coveralls:push || true # in case of networking errors
-fi
-
-exit_build_step

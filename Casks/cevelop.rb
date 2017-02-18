@@ -1,13 +1,10 @@
 cask 'cevelop' do
-  version '1.4.0-201603071314'
-  sha256 '9199a6e5978e608e51de95e165f13acfdec49d265fef4bf4df5b93973f6cf2ae'
+  version '1.6.0-201701201507'
+  sha256 'd6b9ad4657a3753290927ec451867ca4e43d441af9440c4653fa4424a66e8d23'
 
   url "https://www.cevelop.com/cevelop/downloads/cevelop-#{version}-macosx.cocoa.x86_64.tar.gz"
   name 'Cevelop'
   homepage 'https://www.cevelop.com/'
-  license :gratis
-
-  depends_on arch: :x86_64
 
   app 'Cevelop.app'
 end

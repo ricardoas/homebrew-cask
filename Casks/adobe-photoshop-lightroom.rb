@@ -1,11 +1,10 @@
 cask 'adobe-photoshop-lightroom' do
-  version '6.4'
-  sha256 '877a16dc12655a43d5c137ddd789a4c7095e7c29c7886cd5d0545af2f1973336'
+  version '6.8'
+  sha256 '4b0b40d3fd2a40690a9741d65bf36174cb9706fb4c32c3f6fe2fc24f92653273'
 
-  url "http://swupdl.adobe.com/updates/oobe/aam20/mac/AdobeLightroom-#{version.to_i}.0/#{version}/setup.dmg"
+  url "http://swupdl.adobe.com/updates/oobe/aam20/mac/AdobeLightroom-#{version.major}.0/#{version}/setup.dmg"
   name 'Adobe Photoshop Lightroom'
   homepage 'https://www.adobe.com/products/photoshop-lightroom.html'
-  license :commercial
 
   depends_on cask: 'caskroom/versions/adobe-photoshop-lightroom600'
 
@@ -14,17 +13,26 @@ cask 'adobe-photoshop-lightroom' do
   # and https://github.com/caskroom/homebrew-versions/pull/296
 
   preflight do
-    system '/usr/bin/killall', '-kill', 'SafariNotificationAgent'
-    system '/usr/bin/sudo', '-E', '--', "#{staged_path}/AdobePatchInstaller.app/Contents/MacOS/AdobePatchInstaller", '--mode=silent'
+    processes = system_command '/bin/launchctl', args: ['list']
+
+    if processes.stdout.lines.any? { |line| line =~ %r{^\d+\t\d\tcom.apple.SafariNotificationAgent$} }
+      system_command '/usr/bin/killall', args: ['-kill', 'SafariNotificationAgent']
+    end
+
+    system_command "#{staged_path}/AdobePatchInstaller.app/Contents/MacOS/AdobePatchInstaller",
+                   args: [
+                           '--mode=silent',
+                         ],
+                   sudo: true
   end
 
   uninstall_preflight do
-    system 'brew', 'cask', 'uninstall', 'adobe-photoshop-lightroom600'
+    system_command 'brew', args: ['cask', 'uninstall', 'adobe-photoshop-lightroom600']
   end
 
   zap delete: [
                 '~/Library/Application Support/Adobe/Lightroom',
-                "~/Library/Preferences/com.adobe.Lightroom#{version.to_i}.plist",
+                "~/Library/Preferences/com.adobe.Lightroom#{version.major}.plist",
               ]
 
   caveats 'Installation or Uninstallation may fail with Exit Code 19 (Conflicting Processes running) if Browsers, Safari Notification Service or SIMBL Services are running or Adobe Creative Cloud or any other Adobe Products are already installed. See Logs in /Library/Logs/Adobe/Installers if Installation or Uninstallation fails, to identify the conflicting processes.'

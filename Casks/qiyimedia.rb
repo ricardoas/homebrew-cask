@@ -2,10 +2,9 @@ cask 'qiyimedia' do
   version :latest
   sha256 :no_check
 
-  url 'http://static.qiyi.com/ext/common/iQIYIMedia_005.dmg'
+  url 'http://mbdapp.iqiyi.com/j/ot/iQIYIMedia_003.dmg'
   name '爱奇艺视频'
-  homepage 'https://www.iqiyi.com'
-  license :gratis
+  homepage 'https://www.iqiyi.com/'
 
   app '爱奇艺.app'
 

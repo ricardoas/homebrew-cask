@@ -1,13 +1,25 @@
 cask 'thunder' do
-  version '2.6.7.1706'
-  sha256 '974de57f80e110f1a2001b7bf0b2e60edc28fd6a2234f8f2574ea49c8c6598ff'
+  version '3.0.3.2684'
+  sha256 '6155dda4458aa8e32669f626452a863f398d12633e350bc4d0a523fca193a2ab'
 
-  # sandai.net is the official download host per the vendor homepage
-  url "http://down.sandai.net/mac/thunder_dl#{version}_Beta.dmg"
+  # down.sandai.net was verified as official when first introduced to the cask
+  url "http://down.sandai.net/mac/thunder_#{version}.dmg"
   name 'Thunder'
   name '迅雷'
   homepage 'http://mac.xunlei.com/'
-  license :commercial
+
+  depends_on macos: '>= :yosemite'
 
   app 'Thunder.app'
+
+  zap delete: [
+                '~/Library/Application Support/Thunder',
+                '~/Library/Caches/com.xunlei.Thunder',
+                '~/Library/Caches/com.xunlei.XLPlayer',
+                '~/Library/Caches/com.xunlei.swjsq',
+                '~/Library/Cookies/com.xunlei.Thunder.binarycookies',
+                '~/Library/Preferences/com.xunlei.Thunder.plist',
+                '~/Library/Saved Application State/com.xunlei.Thunder.savedState',
+                '~/Library/Saved Application State/com.xunlei.XLPlayer.savedState',
+              ]
 end

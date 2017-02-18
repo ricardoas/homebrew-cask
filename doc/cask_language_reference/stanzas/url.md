@@ -32,11 +32,11 @@ Where `URL_SECTION` is the smallest possible portion of the URL that uniquely id
 
 These comments must be added so a user auditing the cask knows the URL was verified by the Homebrew-Cask team as the one provided by the vendor, even though it may look unofficial or suspicious. It is our responsibility as Homebrew-Cask maintainers to verify both the `url` and `homepage` information when first added (or subsequently modified, apart from versioning).
 
-The comment doesn’t mean you should trust the source blindly, but we only approve casks in which users can easily verify its authenticity with basic means, such as checking the official homepage or public repository. occasionally, slightly more elaborate techniques may be used, such as inspecting an [`appcast`](appcast.md) we established as official. Cases where such quick verifications aren’t possible (e.g. when the download URL is behind a registration wall) are [treated in a stricter manner](../../development/adding-a-cask.md#unofficial-vendorless-and-walled-builds).
+The comment doesn’t mean you should trust the source blindly, but we only approve casks in which users can easily verify its authenticity with basic means, such as checking the official homepage or public repository. Occasionally, slightly more elaborate techniques may be used, such as inspecting an [`appcast`](appcast.md) we established as official. Cases where such quick verifications aren’t possible (e.g. when the download URL is behind a registration wall) are [treated in a stricter manner](../../development/adding_a_cask.md#unofficial-vendorless-and-walled-builds).
 
 ## Difficulty Finding a URL
 
-Web browsers may obscure the direct `url` download location for a variety of reasons. Homebrew-Cask supplies a script which can read extended file attributes to extract the actual source URL for most files downloaded by a browser on OS X. The script usually emits multiple candidate URLs; you may have to test each of them:
+Web browsers may obscure the direct `url` download location for a variety of reasons. Homebrew-Cask supplies a script which can read extended file attributes to extract the actual source URL for most files downloaded by a browser on macOS. The script usually emits multiple candidate URLs; you may have to test each of them:
 
 ```bash
 $ $(brew --repository)/Library/Taps/caskroom/homebrew-cask/developer/bin/list_url_attributes_on_file <file>
@@ -59,21 +59,21 @@ SourceForge and OSDN (formerly SourceForge.JP) projects are common ways to distr
 We prefer URLs of this format:
 
 ```
-http://downloads.sourceforge.net/sourceforge/$PROJECTNAME/$FILENAME.$EXT
+https://downloads.sourceforge.net/{{project_name}}/{{filename}}.{{ext}}
 ```
 
 Or, if it’s from [OSDN](https://osdn.jp/):
 
 ```
-http://$STRING.osdn.jp/$PROJECTNAME/$RELEASEID/$FILENAME.$EXT
+http://{{subdomain}}.osdn.jp/{{project_name}}/{{release_id}}/{{filename}}.{{ext}}
 ```
 
-`$STRING` is typically of the form `dl` or `$USER.dl`.
+`{{subdomain}}` is typically of the form `dl` or `{{user}}.dl`.
 
-If these formats are not available, and the application is Mac-exclusive (otherwise a command-line download defaults to the Windows version) we prefer the use of this format:
+If these formats are not available, and the application is macOS-exclusive (otherwise a command-line download defaults to the Windows version) we prefer the use of this format:
 
 ```
-http://sourceforge.net/projects/$PROJECTNAME/files/latest/download
+https://sourceforge.net/projects/{{project_name}}/files/latest/download
 ```
 
 ## Personal Hosting Such as Dropbox
@@ -84,8 +84,49 @@ Also make sure to give the URL for the binary download itself, rather than a pre
 
 ## Some Providers Block Command-line Downloads
 
-Some hosting providers actively block command-line HTTP clients (example: FossHub). Such URLs cannot be used in Casks.
+Some hosting providers actively block command-line HTTP clients. Such URLs cannot be used in Casks.
+
+Some providers do not actively block command-line HTTP clients but use URLs that change periodically, or even on each visit (example: FossHub). For those, see section [URLs that Change on Every Visit](#urls-that-change-on-every-visit).
 
 ## Vendor URLs Are Preferred
 
 When possible, it is best to use a download URL from the original developer or vendor, rather than an aggregator such as `macupdate.com`.
+
+## URLs that Change on Every Visit
+
+Some providers use disposable URLs, which a Cask author cannot know in advance. Such URLs may change daily, or on every visit, and sometimes need to be dynamically obtained from a landing site.
+
+### The Problem
+
+In theory, one can write arbitrary Ruby code right in the Cask definition to fetch and construct a disposable URL.
+
+However, this typically involves an HTTP/S round trip to a landing site, which may take a long time. Because of the way Homebrew-Cask loads and parses Casks, it is not acceptable that such expensive operations be performed directly in the body of a Cask definition.
+
+### Using a Block to Defer Code Execution
+
+Similar to the `preflight`, `postflight`, `uninstall_preflight`, and `uninstall_postflight` blocks, the `url` stanza offers an optional _block syntax_:
+
+```rb
+url do
+  # No known stable URL; fetching disposable URL from landing site
+  open('https://example.com/app/landing') do |landing_page|
+    content = landing_page.read
+    parse(content) # => https://example.com/download?23309800482283
+  end
+end
+```
+
+The block is only evaluated when needed, for example on download time or when auditing a Cask.
+Inside a block, you may safely do things such as HTTP/S requests that may take a long time to execute. You may also refer to the `@cask` instance variable, and invoke any method available on `@cask`.
+
+The block will be called immediately before downloading; its result value will be assumed to be a `String` and subsequently used as a download URL.
+
+You can use the `url` stanza with either a direct argument or a block but not with both.
+
+Example for using the block syntax: [audacity.rb](https://github.com/caskroom/homebrew-cask/blob/c389d9ccbb46d30b6ac1cbdbadf49591ca8ff6cd/Casks/audacity.rb#L5-L15)
+
+### Mixing Additional URL Parameters With the Block Syntax
+
+In rare cases, you might need to set URL parameters like `cookies` or `referer` while also using the block syntax.
+
+This is possible by returning a two-element array as a block result. The first element of the array must be the download URL; the second element must be a `Hash` containing the parameters.

@@ -1,13 +1,12 @@
 cask 'dymo-label' do
-  version '8.5.2'
-  sha256 '8cd8e0d135613d48ddb41189ff352eb53214390d149c5afcb6c25f419518c54e'
+  version '8.6'
+  sha256 '9cf5440008967274189a8124461a3a80481d3c4b2ff14d262257a691216add7a'
 
-  url "http://download.dymo.com/dymo/Software/Mac/DLS#{version.to_i}Setup.#{version}.dmg"
+  url "http://download.dymo.com/dymo/Software/Mac/DLS#{version.major}Setup.#{version}.dmg"
   name 'Dymo Label'
   homepage 'https://www.dymo.com/en-US/online-support'
-  license :gratis
 
-  pkg "DYMO Label v.#{version.to_i}.pkg"
+  pkg "DYMO Label v.#{version.major}.pkg"
 
   uninstall launchctl: 'com.dymo.pnpd',
             pkgutil:   %w[

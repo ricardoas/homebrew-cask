@@ -1,11 +1,10 @@
 cask 'kindle' do
-  version '41015'
-  sha256 '1c15ce4df69044dc9d2d3562b7f5a8589b65efa5b8e64bc2bcdd7ed41c05df38'
+  version '46083'
+  sha256 '2105e350b1b31cf8ccc4e35468c5ae42c7b34f7c7bbfe3b29677d6c731862328'
 
   url "http://kindleformac.amazon.com/#{version}/KindleForMac-#{version}.dmg"
   name 'Kindle for Mac'
   homepage 'https://www.amazon.com/gp/digital/fiona/kcp-landing-page'
-  license :gratis
 
   app 'Kindle.app'
 

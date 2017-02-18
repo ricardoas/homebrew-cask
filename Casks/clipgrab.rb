@@ -1,11 +1,10 @@
 cask 'clipgrab' do
-  version '3.5.5'
-  sha256 '35a0a25ffaea11a4795e0564711d816f443e6c3ad6d2f8aa6de749d796220ade'
+  version '3.6.3'
+  sha256 '2779fe6ccb4be6e1cd0bf023c5f21b6bde38e33eab33acd4d4b2926ea914e24a'
 
-  url "http://download.clipgrab.de/ClipGrab-#{version}.dmg"
+  url "https://download.clipgrab.org/ClipGrab-#{version}.dmg"
   name 'ClipGrab'
-  homepage 'http://clipgrab.org'
-  license :gratis
+  homepage 'https://clipgrab.org/'
 
   app 'ClipGrab.app'
 

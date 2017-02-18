@@ -1,12 +1,11 @@
 cask 'seamonkey' do
-  version '2.39'
-  sha256 '43bc6ad087242055db6ae6a3f14ef83729f4b455d7a2e10f7935a9304d84dcf8'
+  version '2.46'
+  sha256 '167ae1fa1cd84006d1c85991b983dc9c9d00463f45ac480a3d6d41436bcb6f59'
 
-  # mozilla.org is the official download host per the vendor homepage
-  url "https://download.mozilla.org/?product=seamonkey-#{version}&os=osx&lang=en-US"
+  # mozilla.org was verified as official when first introduced to the cask
+  url "https://archive.mozilla.org/pub/seamonkey/releases/#{version}/mac/en-US/SeaMonkey%20#{version}.dmg"
   name 'SeaMonkey'
   homepage 'http://www.seamonkey-project.org/'
-  license :oss
 
   app 'SeaMonkey.app'
 end

@@ -1,11 +1,13 @@
 cask 'armory' do
-  version '0.93.3'
-  sha256 'ecadb37e43f86a06815f0bc0cec8708b64fd3b53d9c01d7c939d2c941a5e8e91'
+  version '0.95.1'
+  sha256 '9ec3803b914660c5fbecfd5b2d6e907f64d16f920cd648678137d307399beb8d'
 
-  url "https://www.bitcoinarmory.com/downloads/bitcoinarmory-releases/armory_#{version}_osx.tar.gz"
+  # github.com was verified as official when first introduced to the cask
+  url "https://github.com/goatpig/BitcoinArmory/releases/download/v#{version}/armory_#{version}_osx.tar.gz"
+  appcast 'https://github.com/goatpig/BitcoinArmory/releases.atom',
+          checkpoint: 'd07ce0e7298475fc9a26b19ec5f525d987f6d245a9fc3e7050f1facf504f1d74'
   name 'Armory'
-  homepage 'https://bitcoinarmory.com/'
-  license :affero
+  homepage 'https://btcarmory.com/'
 
   app 'Armory.app'
 end

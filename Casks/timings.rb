@@ -1,13 +1,12 @@
 cask 'timings' do
-  version '2.4.5'
-  sha256 'c3278597431f8043e82e48263185832c123baa2c7e7fb97c7377b4fd2fe28f06'
+  version '3.0.7'
+  sha256 '97a634722d8ae5ee864f1e14514d414011d0731351f61e52e0c1417eabbe6936'
 
-  url "https://mediaatelier.com/Timings2/Timings_#{version}.zip"
-  appcast 'https://mediaatelier.com/Timings2/feed.php',
-          checkpoint: 'ee74ed34946d7983e6a3cbf9e83283032a38e672dab04ddf840c8c6ec8ad992b'
+  url "https://mediaatelier.com/Timings#{version.major}/Timings_#{version}.zip"
+  appcast "https://mediaatelier.com/Timings#{version.major}/feed.php",
+          checkpoint: '66049e72c581ce312e800aeb1f28775fe50c44d9c4e2c98cad54156afd64d029'
   name 'Timings'
-  homepage 'http://mediaatelier.com/Timings'
-  license :commercial
+  homepage 'https://www.mediaatelier.com/Timings3/'
 
   depends_on macos: '>= :mavericks'
 

@@ -1,12 +1,13 @@
 cask 'iordning' do
-  version '6.0.43'
-  sha256 '965818c8e43f51826edef0e9c4bc8a083d6b698b2fae2f63a1de2407f02c59a3'
+  version '6.0.61'
+  sha256 'a8610e2a14148a57c129ba73bd7a1a26bad348f2fdb117612a273328386ca0a5'
 
-  url "https://www.aderstedtsoftware.com/downloads/iOrdning#{version.to_i}.zip"
+  url "https://www.aderstedtsoftware.com/downloads/iOrdning#{version.major}.zip"
+  appcast "https://www.aderstedtsoftware.com/economacs/v#{version.major}_appcast.xml",
+          checkpoint: '70e3ff5eef7e58d4b00eccf501a4e2a02a6be60502af808c81b239285eaa7951'
   name 'iOrdning'
   name 'Economacs'
-  homepage 'https://aderstedtsoftware.com/'
-  license :commercial
+  homepage 'https://www.aderstedtsoftware.com/iordning/'
 
   app 'iOrdning.app'
 end

@@ -1,20 +1,36 @@
 cask 'docker' do
-  version '1.10.3'
-  sha256 '054330d838816989400c0bd11533691ce59a230d694e871204d2eee37298054e'
+  version '1.13.1.15353'
+  sha256 '137ac8f191f043759f09fef705219d97586cac1e742f34715d823aefca2a2591'
 
-  url "https://get.docker.com/builds/Darwin/x86_64/docker-#{version}"
-  appcast 'https://github.com/docker/docker/releases.atom',
-          checkpoint: 'ed067a0c9a4021acb5e59e866192bea0f3dc7e454360a8530b7fa80fe4f0d2b0'
-  name 'Docker Engine Client'
-  homepage 'https://docs.docker.com/engine/userguide/'
-  license :apache
+  url "https://download.docker.com/mac/stable/#{version}/Docker.dmg"
+  appcast 'https://download.docker.com/mac/stable/appcast.xml',
+          checkpoint: '166a08c5e8877e645850e78720c735a9492b6f75e0d9e81da1331c6521eba8a5'
+  name 'Docker'
+  homepage 'https://www.docker.com/products/docker'
 
-  depends_on arch: :x86_64
-  container type: :naked
+  auto_updates true
+  depends_on macos: '>= :yosemite'
 
-  binary "docker-#{version}", target: 'docker'
+  app 'Docker.app'
 
-  postflight do
-    set_permissions "#{staged_path}/docker-#{version}", '0755'
-  end
+  uninstall launchctl: [
+                         'com.docker.helper',
+                         'com.docker.vmnetd',
+                       ],
+            delete:    '/Library/PrivilegedHelperTools/com.docker.vmnetd'
+
+  zap delete: [
+                '~/Library/Application Scripts/com.docker.helper',
+                '~/Library/Caches/KSCrashReports/Docker',
+                '~/Library/Caches/com.docker.docker',
+                '~/Library/Caches/com.plausiblelabs.crashreporter.data/com.docker.docker',
+                '~/Library/Containers/com.docker.docker',
+                '~/Library/Containers/com.docker.helper',
+                '~/Library/Group Containers/group.com.docker',
+                '~/Library/Preferences/com.docker.docker.plist',
+              ],
+      rmdir:  [
+                '~/Library/Caches/KSCrashReports',
+                '~/Library/Caches/com.plausiblelabs.crashreporter.data',
+              ]
 end

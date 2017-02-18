@@ -4,10 +4,9 @@ cask 'private-internet-access' do
 
   url 'https://www.privateinternetaccess.com/installer/installer_osx.dmg'
   name 'Private Internet Access'
-  homepage 'https://www.privateinternetaccess.com'
-  license :gratis
+  homepage 'https://www.privateinternetaccess.com/'
 
-  installer script: 'Private Internet Access Installer.app/Contents/MacOS/runner.sh'
+  installer manual: 'Private Internet Access Installer.app'
 
   postflight do
     set_ownership '~/.pia_manager'

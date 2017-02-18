@@ -1,14 +1,13 @@
 cask 'movelinks' do
-  version '1.3.25'
-  sha256 '193a484db300af323a358bb7e8eb528c7a9f5c534df810bb63b5e178e768cf72'
+  version '1.4.4'
+  sha256 '474ec979b4fb9b6c2319a61162e95ca895eb9949b3f2a72a7365561bcf651a8c'
 
   # d1c229iib3zm7m.cloudfront.net was verified as official when first introduced to the cask
   url "https://d1c229iib3zm7m.cloudfront.net/mac/Moveslink2_#{version.dots_to_underscores}.dmg"
   appcast 'https://d1c229iib3zm7m.cloudfront.net/mac/appcast.xml',
-          checkpoint: 'fb749b7e304f3bda8311b2eb06f1b272f945638225272fe9cf664d587704de39'
+          checkpoint: 'c1d5f1b9a7c848fde84a61e12ed6232eb517126ad92be680ba4e37c76f902e14'
   name 'Movelinks'
-  homepage 'http://www.movescount.com/connect/moveslinkmac/Suunto_Ambit'
-  license :unknown # TODO: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'http://www.movescount.com/connect?os=mac'
 
   auto_updates true
 

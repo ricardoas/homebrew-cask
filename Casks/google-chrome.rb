@@ -5,31 +5,34 @@ cask 'google-chrome' do
   url 'https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg'
   name 'Google Chrome'
   homepage 'https://www.google.com/chrome/'
-  license :gratis
 
   auto_updates true
+  depends_on macos: '>= :mavericks'
 
   app 'Google Chrome.app'
 
   zap delete: [
+                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.google.chrome.app.*.sfl',
+                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.google.chrome.sfl',
                 '~/Library/Application Support/Google/Chrome',
                 '~/Library/Caches/Google/Chrome',
                 '~/Library/Caches/com.google.Chrome',
-                '~/Library/Caches/com.google.Chrome.helper.EH',
+                '~/Library/Caches/com.google.Keystone',
                 '~/Library/Caches/com.google.Keystone.Agent',
                 '~/Library/Caches/com.google.SoftwareUpdate',
                 '~/Library/Google/GoogleSoftwareUpdate',
+                '~/Library/Google/Google Chrome Brand.plist',
+                '~/Library/LaunchAgents/com.google.keystone.agent.plist',
                 '~/Library/Logs/GoogleSoftwareUpdateAgent.log',
+                '~/Library/Preferences/com.google.Chrome.plist',
+                '~/Library/Preferences/com.google.Keystone.Agent.plist',
+                '~/Library/Saved Application State/com.google.Chrome.app.*.savedState',
+                '~/Library/Saved Application State/com.google.Chrome.savedState',
+                '~/Library/WebKit/com.google.Chrome',
               ],
       rmdir:  [
+                '~/Library/Application Support/Google',
                 '~/Library/Caches/Google',
                 '~/Library/Google',
               ]
-
-  caveats <<-EOS.undent
-    The Mac App Store version of 1Password won't work with a Homebrew-Cask-linked Google Chrome. To bypass this limitation, you need to either:
-
-      + Move Google Chrome to your /Applications directory (the app itself, not a symlink).
-      + Install 1Password from outside the Mac App Store (licenses should transfer automatically, but you should contact AgileBits about it).
-  EOS
 end

@@ -1,11 +1,12 @@
 cask 'kicad' do
-  version '4.0.1'
-  sha256 '1b29b269b89e4af75b1292a10c75d0977cf573fe99a9f343fa578a0e4f862730'
+  version '4.0.5'
+  sha256 '4e15567c655176bd8d187d8d9c3e9413e7777e84bd5cef057f04b5895a5e786b'
 
   url "http://downloads.kicad-pcb.org/osx/stable/kicad-#{version}.dmg"
+  appcast 'http://downloads.kicad-pcb.org/osx/stable/',
+          checkpoint: '356ff8ea5663cc43501727300029e2d5e3a2d8eea4878c4c1a4bbfb407ba9739'
   name 'KiCad'
-  homepage 'http://www.kicad-pcb.org/'
-  license :gpl
+  homepage 'http://kicad-pcb.org/'
 
   suite 'Kicad-apps', target: 'Kicad'
   artifact 'kicad', target: "#{ENV['HOME']}/Library/Application Support/kicad"
